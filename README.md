@@ -1,6 +1,6 @@
 As [defined in Wikipedia](https://en.wikipedia.org/wiki/Social_viewing):
 
->Social viewing (also known as Watch Party or GroupWatch) describes a recently developed practice revolving around the ability for multiple users to aggregate from multiple sources and view online videos together in a synchronized viewing experience. Typically the experience also involves some form of instant messaging or communication to facilitate discussion pertaining to the common viewing experience.
+>**Social viewing** (also known as **Watch Party** or **GroupWatch**) describes a recently developed practice revolving around the ability for multiple users to aggregate from multiple sources and view online videos together in a synchronized viewing experience. Typically the experience also involves some form of instant messaging or communication to facilitate discussion pertaining to the common viewing experience.
 
 # Goals
 This project was made exactly for this experience with some goals in mind:
