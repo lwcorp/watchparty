@@ -7,7 +7,7 @@ This project was made exactly for this experience with some goals in mind:
 1. Allowing both the host and the viewers to watch the same screen (whereas usually the host controls the video without actually seeing it).
 1. Relying on pure HTML5 `<video>` usage.
 1. Supporting **SRT** subtitles/captions (known in HTML5 videos as `track`s).
-1. Supporting non Unicode subtitles.
+1. Supporting (foreign) non Unicode subtitles.
 1. Only relying on client side Vanilla JS code, so anybody could use it without installing anything.
 1. Allowing to choose a margin for the subtitles, as **some TVs cut them off** if they're stuck to the default bottom.
 1. Including a 1 sided chat (to be shown over Chromecast) plus a bot.
