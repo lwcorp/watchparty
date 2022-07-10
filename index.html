@@ -10,7 +10,12 @@
     line-height: 150%;
     font-family: 'Source Sans Pro';
 	}
+	.footer {
+		position: fixed;
+   }
 }
+
+a { color: grey; }
 
 body {
 	background-color: black;
@@ -30,16 +35,22 @@ video {
 	/*width: auto;*/
 	max-width: 100%;
 	object-fit: contain;
-</style>
-<!--
-<style>
-body {
-  background-color: black;
-  color: white;
 }
+
+hr {
+	width: 30%;
+	border-bottom: 0px
+}
+
+.footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   /* background-color: red; */
+   /* color: white; */
+   text-align: center;
 }
 </style>
--->
 </head>
 <body>
 <h1>Local Watch Party</h1>
@@ -60,6 +71,11 @@ Video: <input name="video" type="file" onchange="loader(this)" accept="video/*">
 
 <div class="floater">
 <iframe src="chat.html"></iframe>
+</div>
+
+<div class="footer">
+  <hr>
+  <p>&copy; LWC <a href="https://github.com/lwcorp/watchparty" target="_blank">https://github.com/lwcorp/watchparty</p>
 </div>
 
 <script>
