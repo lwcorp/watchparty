@@ -17,7 +17,7 @@ This project was made exactly for this experience with some goals in mind:
 1. (Optionally) Choose local subtitles/captions.
 1. (Optionally) Choose a margin subtitles/captions. Negative means from the player's bottom and Positive means from the player's top.
 1. (Optionally) set the host's name for the chat.
-1. (Optionally) [Cast the tab or screen to Chromecast](https://support.google.com/chromecast/answer/3228332) (keep in mind in Chromecost only the host has control).
+1. (Optionally) [Cast the tab or screen to Chromecast](https://support.google.com/chromecast/answer/3228332) (keep in mind in Chromecast only the host has control).
 1. Enjoy the social viewing!
 
 # History
@@ -37,7 +37,7 @@ This was handled by:
 These actions are all event driven so that the user can change the video, subtitles/captions and margin setting at all times.
 
 # Notes
-This project can't compete with [the watchparty project](https://github.com/howardchung/watchparty) which has many other features.
+This project can't compete with [this watchparty project](https://github.com/howardchung/watchparty) which has many other features.
 However, the project here also has advanages:
 1. It's new whereas the aforementioned project died more than a year ago.
 1. It supports [Play/Pause when clicking the central video](https://github.com/howardchung/watchparty/issues/509).
