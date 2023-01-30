@@ -102,29 +102,23 @@ function resize(video) {
 
 function loader(elm) {
 	if (elm.name != 'track')
-	document.querySelector(elm.name).src = URL.createObjectURL(elm.files[0]);
+		document.querySelector(elm.name).src = URL.createObjectURL(elm.files[0]);
 
 	if (elm.name == 'track') {
-		var elm_actual
+		var elm_actual;
 		if (document.querySelectorAll(elm.name).length>0) {
-			elm_actual = document.querySelector(elm.name)
+			elm_actual = document.querySelector(elm.name);
 			for (var i = elm_actual.parentNode.textTracks.length - 1; i >= 0; i--)
 				elm_actual.parentNode.textTracks[i].mode = "disabled";
-			document.querySelector(elm.name).parentNode.removeChild(document.querySelector(elm.name))
+			document.querySelector(elm.name).parentNode.removeChild(document.querySelector(elm.name));
 		}
-		var track = document.createElement('track')
+		var track = document.createElement('track');
 		var elm_actual = document.querySelector('video').appendChild(track), encoding, is_srt;
 		document.querySelector(elm.name).src = URL.createObjectURL(elm.files[0]);
-		initialize_test()
-//		var elm_actual = document.querySelector(elm.name), encoding, is_srt;
+		initialize_test();
 		elm_actual.setAttribute('kind', 'subtitles');
 		elm_actual.setAttribute('default', '');
-//		elm_actual.removeAttribute('label');
-//		elm_actual.removeAttribute('data-encoding');
 		is_srt = elm.files[0].name.toLowerCase().endsWith('.srt');
-//		if (is_srt)
-//			for (var i = elm_actual.parentNode.textTracks.length - 1; i >= 0; i--)
-//				elm_actual.parentNode.textTracks[i].mode = "disabled";
 		languageEncoding(elm.files[0]).then(fileInfo => {encoding = fileInfo.encoding;
 			if (encoding !== null) {
 				elm_actual.setAttribute('label', fileInfo.language == null ? 'Unknown' : fileInfo.language.replace(/^./, str => str.toUpperCase()));
