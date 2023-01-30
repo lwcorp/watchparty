@@ -30,7 +30,6 @@ The last goal was problematic because practically almost all chats out rely on s
 This was handled by:
 1. Using `URL.createObjectURL` to convert the subtitles into `blob`s and thus bypass `track`'s server requirement.
 1. Upgrading and modifying [SRT-Support-for-HTML5-videos](https://github.com/codeit-ninja/SRT-Support-for-HTML5-videos) to support [Detect-File-Encoding-And-Language](https://github.com/gignupg/Detect-File-Encoding-And-Language).
-1. Using `TextDecoder` to convert the non Unicode subtitles/captions into Unicode.
 1. Running a loop to change the subtitles/captions' margin by modifying `textTracks`' `cues`' `line`.
 1. Locating [Simple Chat UI](https://codepen.io/sajadhsm/pen/odaBdd), a basic chat that was ripe for upgrading and modifying it to be more dynamic, support iframe integration as well as adding bot support.
 
