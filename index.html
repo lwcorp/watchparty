@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>Local Watch Party</title>
 <script src="https://unpkg.com/detect-file-encoding-and-language/umd/language-encoding.min.js"></script>
+<!--<script src="source.es.js"></script>-->
 <style>
 @media only screen and (min-width: 768px) {
   body {margin: 5% 15% 5% 20%;
@@ -57,14 +58,14 @@ hr {
 <h3>Chromecast (with subtitles) to your family and friends white chatting</h3>
 <div class="floater" style="max-width: 70%">
 <form>
-Video: <input name="video" type="file" onchange="loader(this)" accept="video/*">
-<br />Subtitles: <input name="track" type="file" onchange="loader(this)" accept=".srt">
-<br />Subtitle line margin: <input type="number" min="-20" value="-3" max="100" step="1" id="input-change-line" onchange="initialize_test()">
+Video: <input name="video" type="file" accept="video/*">
+<br />Subtitles: <input name="track" type="file" accept=".srt">
+<br />Subtitle line margin: <input type="number" min="-20" value="-3" max="100" step="1" id="input-change-line"> <!-- onchange="initialize_test()"> -->
 </form>
 
-<video controls autoplay muted onloadstart="this.volume=0.3">
+<video controls autoplay onloadstart="this.volume=0.3">
 <!--   <source src=""><!-- type="video/mp4">-->
-<track src="" kind="subtitles" default>
+<!--<track src="" kind="subtitles" default>-->
 <!--  <track src="" kind="subtitles" srclang="he" label="Hebrew" default> -->
 </video>
 </div>
@@ -78,12 +79,21 @@ Video: <input name="video" type="file" onchange="loader(this)" accept="video/*">
   <p>&copy; LWC <a href="https://github.com/lwcorp/watchparty" target="_blank">https://github.com/lwcorp/watchparty</p>
 </div>
 
-<script>
+<script type="module">
+import { transformSrtTracks } from 'https://cdn.jsdelivr.net/gh/codeit-ninja/SRT-Support-for-HTML5-videos@master/dist/main.es.js';
 var track_elem = document.querySelector('track');
 
-track_elem.addEventListener('loaded',initialize_test,false); // Bug in FF31 MAC: wrong event name
-track_elem.addEventListener('load',initialize_test,false);
-track_elem.parentNode.addEventListener('loadedmetadata',resize, false);
+//track_elem.addEventListener('loaded',initialize_test,false); // Bug in FF31 MAC: wrong event name
+//track_elem.addEventListener('load',initialize_test,false);
+document.querySelector('#input-change-line').addEventListener('change',initialize_test,false);
+document.querySelector('[name="video"]').addEventListener("change", function() {
+  loader(this);
+}); 
+document.querySelector('[name="track"]').addEventListener("change", function() {
+  loader(this);
+}); 
+//track_elem.parentNode.addEventListener('loadedmetadata',resize, false);
+document.querySelector('video').addEventListener('loadedmetadata',resize, false);
 
 function resize(video) {
 	var video = document.querySelector('video');
@@ -91,113 +101,50 @@ function resize(video) {
 };
 
 function loader(elm) {
+	if (elm.name != 'track')
 	document.querySelector(elm.name).src = URL.createObjectURL(elm.files[0]);
 
 	if (elm.name == 'track') {
-        var subtitle = {
-            data: 
-            {
-                track: {}
-            },
-            /**
-             * Load the file from url
-             *
-             * @param {object}    track   - DOM <track /> object
-             */
-            load: function(track) 
-            {
-                subtitle.track = track;
-                
-//                if(subtitle.isSrt(subtitle.track.src)) 
-                if(subtitle.isSrt(elm.files[0].name))
-                {
-					var encoding, decoder;
-					fetch (subtitle.track.src)
-						.then(x => x.arrayBuffer()) //x.text())
-						.then(y => {languageEncoding(elm.files[0]).then(fileInfo => {encoding = fileInfo.encoding;
-							if (encoding === null)
-								decoder = new TextDecoder();
-							else
-								decoder = new TextDecoder(encoding);
-							subtitle.convert(decoder.decode(y)).then(
-								function (file) 
-								{
-									/**
-									* Replace the srt file with the generated vtt file
-									*/
-									subtitle.track.src = file   
-								}
-							)
-						});
-						});
-/*
-                    var client = new XMLHttpRequest();
-                    client.open('GET', subtitle.track.src);
-					client.overrideMimeType('text/plain;charset=Windows-1255');
-                    client.onreadystatechange = function() 
-                    {
-                        subtitle.convert(client.responseText).then(
-                            function (file) 
-                            {
-                                /**
-                                 * Replace the srt file with the generated vtt file
-                                 /
-                                subtitle.track.src = file   
-                            }
-                        );
-                    }
-                    client.send();
-*/
-                }
-            },
-            /**
-             * Converts the SRT string to a VTT formatted string
-             *
-             * @param   {string}    content     - SRT string
-             * @return  {object}    promise     - Returns a promise with the generated file as the return value
-             */
-            convert: function(content) 
-            {
-                var promise = new Promise( 
-                    function (resolve, reject) 
-                    {
-                        /**
-                         * Replace all (,) commas with (.) dots. Eg: 00:00:01,144 -> 00:00:01.144
-                         */
-                        content = content.replace(/(\d+:\d+:\d+)+,(\d+)/g, '$1.$2');
-                        content = "WEBVTT - Generated using SRT2VTT\r\n\r\n" + content;
-                        
-                        /**
-                         * Convert content to a file
-                         */
-                        var blob = new Blob([content], {type: 'text/vtt'});
-                        var file = window.URL.createObjectURL(blob);
-                        
-                        resolve(file);
-                    }
-                );
-                
-                return promise;
-            },
-            isSrt: function(filename) 
-            {
-                return filename.split('.').pop().toLowerCase() === 'srt' ? true : false;
-            },
-            isVTT: function(filename) 
-            {
-                return filename.split('.').pop().toLowerCase() === 'vtt' ? true : false;
-            }
-        }
-        subtitle.load(document.querySelector(elm.name));
+		var elm_actual
+		if (document.querySelectorAll(elm.name).length>0) {
+			elm_actual = document.querySelector(elm.name)
+			for (var i = elm_actual.parentNode.textTracks.length - 1; i >= 0; i--)
+				elm_actual.parentNode.textTracks[i].mode = "disabled";
+			document.querySelector(elm.name).parentNode.removeChild(document.querySelector(elm.name))
+		}
+		var track = document.createElement('track')
+		var elm_actual = document.querySelector('video').appendChild(track), encoding, is_srt;
+		document.querySelector(elm.name).src = URL.createObjectURL(elm.files[0]);
+		initialize_test()
+//		var elm_actual = document.querySelector(elm.name), encoding, is_srt;
+		elm_actual.setAttribute('kind', 'subtitles');
+		elm_actual.setAttribute('default', '');
+//		elm_actual.removeAttribute('label');
+//		elm_actual.removeAttribute('data-encoding');
+		is_srt = elm.files[0].name.toLowerCase().endsWith('.srt');
+//		if (is_srt)
+//			for (var i = elm_actual.parentNode.textTracks.length - 1; i >= 0; i--)
+//				elm_actual.parentNode.textTracks[i].mode = "disabled";
+		languageEncoding(elm.files[0]).then(fileInfo => {encoding = fileInfo.encoding;
+			if (encoding !== null) {
+				elm_actual.setAttribute('label', fileInfo.language == null ? 'Unknown' : fileInfo.language.replace(/^./, str => str.toUpperCase()));
+				if (is_srt)
+					elm_actual.setAttribute('data-encoding', encoding);
+			}
+			if (is_srt)
+				transformSrtTracks(elm_actual.parentNode);
+		});
 	}
 }
 
 function initialize_test() {
   var i, j, track, video = document.querySelector('video');
   track = video.textTracks;
-  for (i=0; i<track.length; i++)
-    for (j=0; j<track[i].cues.length; j++)
-		track[i].cues[j].line = parseInt(document.querySelector('#input-change-line').value);
+  for (i=0; i<track.length; i++) {
+	if (track[i].cues != null)
+		for (j=0; j<track[i].cues.length; j++)
+			track[i].cues[j].line = parseInt(document.querySelector('#input-change-line').value);
+  }
 }
 </script>
 
