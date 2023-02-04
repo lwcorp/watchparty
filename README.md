@@ -21,7 +21,7 @@ This project was made exactly for this experience with some goals in mind:
 1. Enjoy the social viewing!
 
 # History
-Goals 2-5 goals clashed because `track` not only doesn't support non Unicode, it only supports VTT subtitles and **not** local ones. In other words, you have both convert your regular SRT subtitles into Unicode, then into VTT, then upload them and use online links instead of just your computer files.
+Goals 2-5 goals clashed because `track` not only doesn't support non Unicode, it only supports VTT subtitles and **not** local ones. In other words, you have to both convert your regular SRT subtitles into Unicode, then into VTT, then upload them and use online links instead of just your computer files.
 
 Goal 6 was challenging as `track` seemingly doesn't have a built-in way to set margin.
 
