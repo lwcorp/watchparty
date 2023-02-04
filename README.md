@@ -27,7 +27,7 @@ Goal 3 was specifically challenging as `track` seemingly doesn't have a built-in
 
 Goal 4 was problematic because practically almost all chats out rely on servers, while int this case it's a complete overkill if only the host gets to chat anyway (as the rest just see it over Chromecast).
 
-This was handled by:
+These challenges were handled by:
 1. Using `URL.createObjectURL` to convert the subtitles into `blob`s and thus bypass `track`'s server requirement.
 1. Combining [SRT-Support-for-HTML5-videos](https://github.com/codeit-ninja/SRT-Support-for-HTML5-videos) with [Detect-File-Encoding-And-Language](https://github.com/gignupg/Detect-File-Encoding-And-Language).
 1. Running a loop to change the subtitles/captions' margin by modifying `textTracks`' `cues`' `line`.
