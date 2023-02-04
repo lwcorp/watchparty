@@ -31,7 +31,7 @@ These challenges were handled by:
 1. Using `URL.createObjectURL` to convert the subtitles into `blob`s and thus bypass `track`'s server requirement.
 1. Combining [SRT-Support-for-HTML5-videos](https://github.com/codeit-ninja/SRT-Support-for-HTML5-videos) with [Detect-File-Encoding-And-Language](https://github.com/gignupg/Detect-File-Encoding-And-Language).
 1. Running a loop to modify each `textTracks`' `cues`' `line` in the subtitles/captions' margin.
-1. Designing an upgraded version of [Simple Chat UI](https://codepen.io/sajadhsm/pen/odaBdd) to make it more dynamic, support iframe integration and include a bot.
+1. Designing an upgraded version of [Simple Chat UI](https://codepen.io/sajadhsm/pen/odaBdd) to make it more dynamic, support embedding/integrating through an iframe and include a bot.
 
 These actions are all event driven so that the user can change the video, subtitles/captions and margin setting at all times.
 
