@@ -25,7 +25,7 @@ Goals 2-5 goals clashed because `track` not only doesn't support non Unicode, it
 
 Goal 3 was specifically challenging as `track` seemingly doesn't have a built-in way to set margin.
 
-The last goal was problematic because practically almost all chats out rely on servers, while it's a complete overkill if only the host gets to chat anyway (as the rest just see it over Chromecast).
+Goal 4 was problematic because practically almost all chats out rely on servers, while int this case it's a complete overkill if only the host gets to chat anyway (as the rest just see it over Chromecast).
 
 This was handled by:
 1. Using `URL.createObjectURL` to convert the subtitles into `blob`s and thus bypass `track`'s server requirement.
