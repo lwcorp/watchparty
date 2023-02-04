@@ -2,7 +2,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>Local Watch Party</title>
 <script src="https://unpkg.com/detect-file-encoding-and-language/umd/language-encoding.min.js"></script>
-<!--<script src="source.es.js"></script>-->
 <style>
 @media only screen and (min-width: 768px) {
   body {margin: 5% 15% 5% 20%;
@@ -80,6 +79,28 @@ Video: <input name="video" type="file" accept="video/*">
 </div>
 
 <script type="module">
+/*
+Copyright (C) https://lior.weissbrod.com
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Additional restrictions under GNU GPL version 3 section 7:
+
+In accordance with item 7b), it is required to preserve the reasonable legal notices/author attributions in the material and in the Appropriate Legal Notices displayed by works containing it (including in the footer).
+In accordance with item 7c), misrepresentation of the origin of the material must be marked in reasonable ways as different from the original version.
+*/
+
 import { transformSrtTracks } from 'https://cdn.jsdelivr.net/gh/codeit-ninja/SRT-Support-for-HTML5-videos@master/dist/main.es.js';
 var track_elem = document.querySelector('track');
 
