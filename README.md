@@ -38,7 +38,7 @@ These actions are all event driven to allow the user to change the video, subtit
 # Notes
 This project can't compete with [this watchparty project](https://github.com/howardchung/watchparty) which has many other features.
 However, the project here also has advanages:
-1. It's new whereas the aforementioned project died more than a year ago.
+1. It's new whereas the aforementioned project died somewhere in 2021.
 1. It supports [Play/Pause when clicking the central video](https://github.com/howardchung/watchparty/issues/509) / [Clicking Pause causes a mute (but clicking Play doesn't cause an unmute)](https://github.com/howardchung/watchparty/issues/681) - both fixed in their source code by now, but not in their official release yet.
 1. There's no [white overlay after subtitles/captions were uploaded](https://github.com/howardchung/watchparty/issues/510) - in fact, there's no uploading!
 1. It supports [Control subtitle/caption line position/margin](https://github.com/howardchung/watchparty/issues/511).
