@@ -33,7 +33,7 @@ These challenges were handled by:
 1. Running a loop to modify each `textTracks`' `cues`' `line` in the subtitles/captions' margin.
 1. Designing an upgraded version of [Simple Chat UI](https://codepen.io/sajadhsm/pen/odaBdd) to make it more dynamic, support embedding/integrating through an iframe and include a bot.
 
-These actions are all event driven so that the user can change the video, subtitles/captions and margin setting at all times.
+These actions are all event driven to allow the user to change the video, subtitles/captions and margin setting at all times.
 
 # Notes
 This project can't compete with [this watchparty project](https://github.com/howardchung/watchparty) which has many other features.
