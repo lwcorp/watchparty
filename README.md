@@ -20,7 +20,11 @@ This project was made exactly for this experience with some goals in mind:
 1. (Optionally) [Cast the tab or screen to Chromecast](https://support.google.com/chromecast/answer/3228332) (keep in mind in Chromecast only the host has control).
 1. Enjoy the social viewing!
 
+<details>
+<summary>
+  
 # History
+</summary>
 Goals 2-5 goals clashed because `track` not only doesn't support non Unicode, it only supports VTT subtitles and **not** local ones. In other words, you have to both convert your regular SRT subtitles into Unicode, then into VTT, then upload them and use online links instead of just your computer files.
 
 Goal 3 was specifically challenging as `track` seemingly doesn't have a built-in way to set margin.
@@ -34,6 +38,7 @@ These challenges were handled by:
 1. Designing an upgraded version of [Simple Chat UI](https://codepen.io/sajadhsm/pen/odaBdd) to make it more dynamic, support embedding/integrating through an iframe and include a bot.
 
 These actions are all event driven to allow the user to change the video, subtitles/captions and margin setting at all times.
+</details>
 
 # Notes
 This project can't compete with [this watchparty project](https://github.com/howardchung/watchparty) which has many other features.
